@@ -1,0 +1,33 @@
+@startuml Localidades
+class Localidad {
+    nombre
+    km
+    equipajeImpresindible
+    precioBase
+    --
+    nombre()
+    precioBase()
+    km()
+    distanciaHasta(unDestino)
+    esDestinoDestacado()
+    aplicarDescuento()
+    esPeligrosa()
+    equipajeImpresindible()
+}
+
+class Playa extends Localidad {
+    esPeligrosa()
+}
+class Montaña extends Localidad{
+    altura
+    esPeligrosa()
+    esDestinoDestacado()
+}
+class CiudadHistorica extends Localidad {
+    museos
+    esPeligrosa()
+    esDestinoDestacado()
+}
+@enduml
+
+

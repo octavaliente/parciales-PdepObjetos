@@ -1,0 +1,1 @@
+class NoSePudoReservarException inherits Exception{}

@@ -1,0 +1,71 @@
+@startuml PdepLibre
+object pdeplibre{
+usuarios
+productos
+--
+}
+
+pdeplibre --> Usuario : productos
+pdeplibre --> Producto : usuarios
+
+class Usuario{
+nivel
+carrito
+cupones
+--
+}
+
+    interface Nivel {
+    -- 
+    }
+
+        object bronce {
+
+        }
+
+        object plata {
+
+        }
+
+        object oro {
+
+        }
+
+Usuario -l-> Nivel : nivel
+bronce .u.|> Nivel
+plata .u.|> Nivel
+oro .u.|> Nivel
+
+class Cupon{
+descuento
+fueUsado
+--
+}
+
+Usuario --> "*" Cupon : cupones
+
+class Producto{
+nombre
+precioBase
+--
+precio()
+precioFinal()
+}
+
+    class Mueble extends Producto{
+        precioFinal()
+    }
+
+    class Indumentaria extends Producto {
+        esDeTemporadaActual
+        --
+        precioFinal()
+    }
+
+    class Ganga extends Producto{
+        precioFinal()
+    }
+
+Usuario -r-> "*" Producto : carrito
+
+@enduml

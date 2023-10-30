@@ -1,0 +1,75 @@
+@startuml Intensamente
+class Chica {
+nivelDeFelicidad
+emocionDominante
+recuerdos
+pensamientosCentrales
+--
+vivirUnEvento(unaDescripcion)
+asentarRecuerdo(unEvento)
+estaFeliz()
+disminuirNivelDeFelicidad(unPorcentaje)
+nuevoPensamientoCentral(unEvento)
+recuerdosRecientes()
+pensamientosCentrales()
+pensamientosCentralesDificiles()
+niegaRecuerdo(unEvento)
+method dormir()
+method asentarRecuerdosDiarios()
+method asentarRecuerdoClave()
+}
+
+Chica .l.> Evento
+Chica --> Emocion : emocionDominante
+
+class Evento {
+    emocionAsociada
+    descripcion
+    fecha
+    --
+    vivirEmocion(unaChica)
+    esDificilDeExplicar()
+    contienePalabra(unaPalabra)
+}
+
+Evento --> Emocion : emocionAsociada
+
+interface Emocion {
+    esAlegre
+    efectoEmocional(unaChica, unRecuerdo)
+    negar(unEvento)
+}
+    object alegria{
+
+    }
+    object tristeza{
+
+    }
+
+class EmocionSinEfecto extends Emocion {
+    efectoEmocional(unaChica, unRecuerdo)
+    negar(unEvento)
+}
+    object disgusto{
+
+    }
+    object furia{
+
+    }
+    object temor{
+        
+    }
+    
+    alegria .u.|> Emocion
+    tristeza .u.|> Emocion
+    disgusto .u.|> EmocionSinEfecto
+    furia .u.|> EmocionSinEfecto
+    temor .u.|> EmocionSinEfecto
+
+class ProcesoMental {
+    efectuarSobre(unaChica)
+}
+
+Chica -r-> ProcesoMental
+
+@enduml

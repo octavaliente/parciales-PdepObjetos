@@ -1,0 +1,36 @@
+@startuml Usuarios
+    class Usuario {
+        tipoUsuario
+        elegirTransporte(unosTransportes, unosKms)
+        puedeCostear(unosTransportes, unosKi)
+    }
+    Usuario .r.> MedioDeTransporte 
+    Usuario --> TipoUsuario : tipoUsuario
+    interface TipoUsuario {
+        elegirTransporte(unosTransportes, unUsuario, unosKms)
+    }
+    class TipoTransporteSelectivo extends TipoUsuario {
+        elegirTransporte(unosTransportes, unUsuario, unosKms)
+    }
+    empresarial .u.|> TipoTransporteSelectivo
+    estudiantil .u.|> TipoTransporteSelectivo
+    object empresarial {
+        elegirTransporte(unosTransportes, unUsuario, unosKms)
+    }
+    object estudiantil {
+        elegirTransporte(unosTransportes, unUsuario, unosKms)
+    }
+    object grupoFamiliar {
+        elegirTransporte(unosTransportes, unUsuario, unosKms)
+    }
+    object barrileteCosmico {
+        armarViaje(unUsuario, unDestino)
+    }
+    class Localidad {
+
+    }
+    barrileteCosmico .r.> Usuario 
+    barrileteCosmico .l.> Localidad
+    
+    grupoFamiliar .u.|> TipoUsuario
+@enduml

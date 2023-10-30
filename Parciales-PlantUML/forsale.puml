@@ -1,0 +1,113 @@
+@startuml ForSale
+
+object inmobiliaria{
+    operaciones
+    empleados
+    --
+    mejorEmpleadoSegun(criterio)
+
+}
+
+class Cliente{
+    nombre
+}
+
+class Empleado{
+
+    comisiones
+    operacionesConcretadas
+    reservas
+
+    --
+    cantidadOperacionesConcretadas()
+    cantidadReservas()
+    zonasRepetidas(posibleEmpleado)
+    zonasTrabajadas()
+    reservaPisada(posibleEmpleado)
+    operacionPisada(posibleEmpleado)
+    tendraProblemas(posibleEmpleado)
+}
+
+interface Operacion{
+    inmueble
+    estado
+    --
+    comision()
+    zona()
+    reservarPara()
+    concretarPara()
+}
+
+class Alquiler{
+    mesesDeAlquiler
+    
+    --
+    
+    comision()
+
+}
+
+class Venta{
+    porcentaje
+    --
+    comision()
+}
+
+interface Inmueble{
+    tamaño
+    ambientes
+    zona
+    --
+    valor()
+    estaReservado()
+}
+
+class Casa{
+    valor()
+}
+
+class Ph{
+    valor()
+}
+
+class Departamento{
+    valor()
+}
+
+class Zona {
+    plusZona
+    --
+    valorAgregado()
+}
+
+object comisiones{
+    tipoComparacion(unEmpleado)
+}
+
+object operaciones{
+    tipoComparacion(unEmpleado)
+}
+
+object reservas{
+    tipoComparacion(unEmpleado)
+}
+
+inmobiliaria --> "*" Empleado : "empleados"
+inmobiliaria --> "*" Operacion : "operaciones"
+
+Alquiler .u.|> Operacion
+Venta .u.|> Operacion
+
+Operacion --> Inmueble
+
+Casa .u.|> Inmueble
+Ph .u.|> Inmueble
+Departamento .u.|> Inmueble
+
+Inmueble --> Zona
+
+inmobiliaria ..> comisiones
+inmobiliaria ..> operaciones
+inmobiliaria ..> reservas
+
+@enduml

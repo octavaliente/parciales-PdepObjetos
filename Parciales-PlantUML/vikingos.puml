@@ -1,0 +1,60 @@
+@startuml
+class Expedicion {
+
+}
+class Vikingo {
+
+}
+interface Casta {
+    
+}
+class Soldado {
+ 
+}
+
+class Granjero{
+ 
+}
+interface Destino{
+
+}
+abstract class Aldea {
+
+}
+class Capital{
+
+}
+object jarl{
+
+}
+class CastaMediaOMas extends Casta {
+
+}
+object karl {
+
+}
+object thrall{
+
+}
+class AldeaIndefensa extends Aldea {
+
+}
+class AldeaDefendida extends Aldea {
+
+}
+Vikingo -l-> Casta : casta
+
+Soldado -u-|> Vikingo
+Granjero -u-|> Vikingo
+
+jarl -u-|> Casta
+karl -u-|> CastaMediaOMas
+thrall -u-|> CastaMediaOMas
+
+Expedicion -l-> "*" Vikingo : participantes
+
+Expedicion -r-> "*" Destino : destinos
+Aldea -u-|> Destino
+Capital -u-|> Destino
+
+@enduml

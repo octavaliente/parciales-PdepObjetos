@@ -1,0 +1,58 @@
+@startuml Jaloguin
+class Ninio extends Miembro{
+
+}
+
+interface Adulto{
+
+}
+class AdultoCopado extends Adulto{
+
+}
+class AdultoComun extends AdultoCopado{
+
+}
+class Abuelo extends AdultoCopado{
+
+}
+object adultoNecio{
+
+}
+class Disfraz{
+
+}
+object maquillaje{
+
+}
+interface Traje{
+
+}
+class Tierno extends Traje{
+
+}
+class Terrorifico extends Traje{
+
+}
+Traje -u-|> Disfraz
+maquillaje -u-|> Disfraz
+
+Ninio -l-> Disfraz
+Ninio .r.> Adulto
+
+adultoNecio .u.|> Adulto
+
+class Legion extends Miembro {
+
+}
+Legion -l-> Miembro
+class Miembro {
+
+}
+
+class Barrio{
+
+}
+Barrio -u-> Ninio
+
+
+@enduml

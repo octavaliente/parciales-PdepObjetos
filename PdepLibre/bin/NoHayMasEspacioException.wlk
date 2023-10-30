@@ -1,0 +1,1 @@
+class NoHayMasEspacioException inherits Exception {}

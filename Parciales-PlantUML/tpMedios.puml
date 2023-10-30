@@ -1,0 +1,28 @@
+@startuml Medios
+interface MedioDeTransporte {
+    costoPorKm()
+}
+class Avion extends MedioDeTransporte{
+    cantidadTurbinas
+    impulsoTurbina
+    sumaImpulsos()
+    costoPorKm()
+}
+
+object micro{
+    costoPorKm()
+}
+micro .u.> MedioDeTransporte
+
+object trenIngles{
+    costoPorKm()
+    kmAMilla()
+} 
+
+trenIngles .u.> MedioDeTransporte
+
+class Barcos extends MedioDeTransporte{
+    probabilidadDeChocar
+    costoPorKm()
+}
+@enduml
