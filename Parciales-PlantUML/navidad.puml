@@ -1,0 +1,75 @@
+@startuml
+class ArbolNavideño{
+    tipoArbol
+    capacidadTotal()
+    capacidadOcupada()
+    capacidadDisponible()
+    agregarRegalo(unRegalo)
+    tieneCapacidad()
+    beneficiarios()
+    costoRegalos()
+    cantidadRegalosTotales()
+    regalosTeQuierenMucho()
+    esArbolPotentoso()
+    adornoMasPesado()
+}
+interface TipoArbol {
+    capacidad()
+}
+class Natural{
+    vejez
+    tamañoTronco
+    capacidad()
+}
+class Artificial{
+    varas
+    capacidad()
+}
+
+class Regalo {
+    precio
+    destinatario
+
+    destinatario()
+    precio()
+    esTeQuierenMucho(precioPromedio)
+}
+class Tarjeta extends Regalo {
+    valorAdjunto
+    precio()
+    esCara()
+}
+
+class Adorno {
+    pesoBase
+    coeficienteDeSuperioridad
+
+    importancia()
+    peso()
+}
+
+class Luces extends Adorno {
+    cantidadDeLamparas
+    importancia()
+}
+
+class FiguraElaborada extends Adorno {
+    volumen
+    importancia()
+}
+
+class Guirnalda extends Adorno {
+    añosDeUso
+    peso()
+}
+
+ArbolNavideño -l-> TipoArbol : tipoArbol
+Natural .u.|> TipoArbol
+Artificial .u.|> TipoArbol
+
+ArbolNavideño -r-> "*" Regalo : regalos
+ArbolNavideño -r-> "*" Tarjeta : tarjetas
+
+ArbolNavideño --> "*" Adorno : adornos
+
+@enduml

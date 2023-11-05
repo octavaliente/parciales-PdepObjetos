@@ -1,0 +1,43 @@
+@startuml
+class BarcoPirata {
+    mision
+    tripulantes
+    capacidad
+}
+class Pirata {
+    items
+    nivelDeEbriedad
+    cantidadDinero
+    invitadoPor
+}
+
+abstract class Mision {
+
+}
+class BusquedaDelTesoro extends Mision{
+
+}
+class Leyenda extends Mision{
+    itemObligatorio
+}
+class Saqueo extends Mision{
+    minimoMonedas
+    victima
+}
+interface Victima{
+
+}
+class CiudadCostera{
+
+}
+class EspiaDeLaCorona extends Pirata{
+
+}
+BarcoPirata -l-> Mision : mision
+BarcoPirata -r-> "*" Pirata : tripulantes
+
+Saqueo --> Victima : victima
+CiudadCostera ..|> Victima
+BarcoPirata ..|> Victima
+Pirata --> Pirata : invitadoPor
+@enduml
